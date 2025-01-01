@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3obmslwroscx"]
+
+[ext_resource type="Texture2D" uid="uid://dthw7l3bc3yqd" path="res://assets/paddle.png" id="1_efyyo"]
+[ext_resource type="Script" path="res://paddle.gd" id="1_gf2sp"]
+[ext_resource type="Script" path="res://game.gd" id="1_uqrmp"]
+[ext_resource type="Script" path="res://ball.gd" id="3_1pvth"]
+[ext_resource type="Texture2D" uid="uid://bi7yotbsy1g1k" path="res://assets/ball.png" id="3_d5m0n"]
+[ext_resource type="Script" path="res://kill_zone.gd" id="5_7gmab"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1u07"]
+radius = 16.0312
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agyuy"]
+size = Vector2(31.2077, 1419.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wls4t"]
+size = Vector2(20, 1990)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_521y6"]
+distance = -242.0
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_uqrmp")
+
+[node name="Paddle" type="CharacterBody2D" parent="."]
+position = Vector2(959.083, 1312)
+motion_mode = 1
+script = ExtResource("1_gf2sp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
+texture = ExtResource("1_efyyo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Paddle"]
+position = Vector2(21.917, -11)
+polygon = PackedVector2Array(-22, -4, -64, -6, -100, -8, -128, -6, -137, 10, -131, 33, -94, 34, -23, 35, 23.6838, 34.0473, 75, 33, 89, 10, 84, -6, 60.824, -8, 22, -5)
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(1136, 1065)
+script = ExtResource("3_1pvth")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_d5m0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_w1u07")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-4, 710.646)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-12.9167, -10.8973)
+shape = SubResource("RectangleShape2D_agyuy")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(960.083, -13)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("RectangleShape2D_wls4t")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1948.08, 710.646)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(-12.9167, -4.77176)
+shape = SubResource("RectangleShape2D_agyuy")
+
+[node name="KillZone" type="Area2D" parent="."]
+position = Vector2(963.083, 1455)
+script = ExtResource("5_7gmab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(-3, 3)
+shape = SubResource("WorldBoundaryShape2D_521y6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(962, 715)
+
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

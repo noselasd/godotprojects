@@ -1,0 +1,248 @@
+[gd_scene load_steps=17 format=3 uid="uid://d2n6o7vka8abg"]
+
+[ext_resource type="PackedScene" uid="uid://dkgmtldhorpm8" path="res://scenes/game_manager.tscn" id="1_7rc2p"]
+[ext_resource type="PackedScene" uid="uid://w3ds1sjr73wr" path="res://scenes/tile_map.tscn" id="2_e8qrg"]
+[ext_resource type="PackedScene" uid="uid://bibqfgi2fgbpm" path="res://scenes/overlay.tscn" id="3_xeakv"]
+[ext_resource type="Texture2D" uid="uid://qtllx7wnvrfd" path="res://assets/sprites/coin.png" id="4_2e20k"]
+[ext_resource type="FontFile" uid="uid://blnh6ungmxkw8" path="res://assets/fonts/PixelOperator8.ttf" id="5_x15p0"]
+[ext_resource type="PackedScene" uid="uid://dcsti0da7awg8" path="res://scenes/player.tscn" id="6_xrrw2"]
+[ext_resource type="PackedScene" uid="uid://c7nsgkaeblb1n" path="res://scenes/killzone.tscn" id="7_1cwjv"]
+[ext_resource type="PackedScene" uid="uid://b641snpbrv5jb" path="res://scenes/coin.tscn" id="8_50yf4"]
+[ext_resource type="PackedScene" uid="uid://2f53jbm815wl" path="res://scenes/green_platform.tscn" id="9_c8257"]
+[ext_resource type="PackedScene" uid="uid://b4kb1vqc0e11r" path="res://scenes/finish_level.tscn" id="10_iv7gx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uvet"]
+bg_color = Color(0.280038, 0.704282, 0.297977, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.880797, 0.81664, 0.0625279, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij0q3"]
+atlas = ExtResource("4_2e20k")
+region = Rect2(3, 3, 10, 10)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aqa0a"]
+
+[sub_resource type="Animation" id="Animation_slaym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(322, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_6uokg"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 1.33333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(322, 50), Vector2(415, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ycqx"]
+_data = {
+"RESET": SubResource("Animation_slaym"),
+"move": SubResource("Animation_6uokg")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_7rc2p")]
+unique_name_in_owner = true
+level_no = 1
+
+[node name="TileMap" parent="." instance=ExtResource("2_e8qrg")]
+position = Vector2(2, -2)
+layer_1/tile_data = PackedInt32Array(131072, 0, 0, 131073, 0, 0, 327679, 0, 0, 327678, 0, 0, 327677, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262152, 0, 0, 262153, 0, 0, 262156, 0, 0, 262157, 0, 0, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 393220, 0, 1, 393219, 0, 1, 393218, 65536, 1, 327688, 0, 1, 327689, 0, 1, 393225, 0, 1, 393224, 0, 1, 327692, 0, 1, 393228, 0, 1, 393229, 0, 1, 327693, 0, 1, 393213, 0, 1, 393214, 0, 1, 393215, 0, 1, 458751, 65536, 0, 458750, 0, 1, 458749, 0, 1, 196608, 0, 1, 196609, 0, 1, 262145, 65536, 1, 327681, 65536, 0, 327680, 65536, 1, 262144, 0, 1, 393216, 65536, 0, 393217, 65536, 0, 262149, 589824, 0, 262150, 655360, 0, 262151, 720896, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 131087, 0, 1, 131088, 0, 1, 131089, 0, 0, 196626, 0, 0, 196625, 0, 1, 196624, 0, 1, 262161, 0, 1, 262162, 0, 1, 262142, 65536, 5, 196617, 524288, 3, -65522, 0, 4, 14, 0, 5, -131058, 0, 3, 131090, 524288, 3, -65534, 0, 1, -131069, 0, 1, -65533, 0, 1, -131068, 0, 1, -65532, 65536, 1, 9, 0, 1, -65526, 65536, 0, 10, 0, 1, -196597, 0, 5, -131061, 0, 0, -65525, 0, 1, 11, 0, 1, 12, 0, 1, -131070, 0, 0, -196605, 0, 0, -196604, 0, 0, -65531, 0, 0, -65530, 589824, 0, -65529, 655360, 0, -65528, 720896, 0, -65527, 0, 0, -131062, 0, 0, -262133, 0, 3, -65524, 0, 0, 196635, 0, 0, 262171, 0, 1, 327707, 0, 1, 393243, 0, 1, 262172, 0, 1, 327708, 65536, 1, 393244, 0, 1, 262173, 0, 1, 327709, 65536, 1, 393245, 65536, 0, 196636, 0, 0, 196637, 0, 0, 262174, 0, 0, 327710, 0, 1, 393246, 0, 1, 262175, 0, 0, 327711, 0, 1, 393247, 0, 1, 327712, 0, 0, 393248, 0, 1, 393249, 65536, 1, 393250, 0, 1, 393251, 65536, 1, 393252, 65536, 1, 393253, 0, 1, 393254, 0, 1, 393255, 0, 1, 393256, 0, 1, 327720, 0, 0, 327719, 0, 0, 327718, 0, 0, 327717, 0, 0, 327716, 0, 0, 327715, 0, 0, 327714, 0, 0, 327713, 0, 0, 262180, 196608, 8, 196644, 196608, 8, 65572, 131072, 4, 262181, 0, 7, 196649, 0, 0, 196650, 0, 0, 262185, 0, 1, 327721, 0, 1, 393257, 0, 1, 393258, 65536, 0, 327722, 65536, 0, 262186, 65536, 0, 131116, 0, 1, 131117, 0, 1, 131118, 65536, 1, 65580, 0, 0, -65491, 0, 0, -65490, 0, 0, 46, 65536, 0, 65582, 65536, 0, 65581, 0, 1, 45, 0, 1, -65489, 589824, 0, -65488, 655360, 0, -65487, 655360, 0, -65486, 655360, 0, -65485, 655360, 0, -65484, 720896, 0, -65483, 0, 0, -65482, 0, 0, -131017, 0, 0, -196552, 0, 0, -262087, 0, 0, -196551, 65536, 1, -131016, 65536, 1, -65481, 0, 1, -65480, 0, 1, -65479, 0, 1, -131015, 0, 1, -65478, 0, 1, -65477, 0, 1, -65476, 0, 1, -65475, 0, 1, -65474, 0, 1, -196549, 262144, 13, -196548, 262144, 13, -196547, 262144, 13, -196546, 262144, 13, -131010, 262144, 805306381, -131011, 262144, 805306381, -131012, 262144, 805306381, -131013, 262144, 805306381, 131114, 524288, 3, 196616, 65536, 4, 196642, 131072, 4, 196647, 131072, 4, -131026, 0, 5, -196562, 0, 3, -131027, 65536, 3, -131019, 65536, 5, 262177, 65536, 5, 262184, 65536, 5, 15, 65536, 5, 262141, 65536, 3)
+
+[node name="UI" parent="." instance=ExtResource("3_xeakv")]
+
+[node name="Panel" type="Panel" parent="UI"]
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 112.0
+offset_bottom = 37.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6uvet")
+
+[node name="Coin" type="TextureRect" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 22.0
+offset_bottom = 20.0
+scale = Vector2(1.67, 1.67)
+texture = SubResource("AtlasTexture_ij0q3")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="Score" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+z_index = 6
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -6.5
+offset_right = -8.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_x15p0")
+text = "0"
+
+[node name="Player" parent="." instance=ExtResource("6_xrrw2")]
+z_index = 5
+position = Vector2(15, 31)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, -6)
+zoom = Vector2(4, 4)
+limit_bottom = 140
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="killzone" parent="." instance=ExtResource("7_1cwjv")]
+position = Vector2(111, 124)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("WorldBoundaryShape2D_aqa0a")
+
+[node name="Collectables" type="Node" parent="."]
+
+[node name="Coin12" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(889, -42)
+rotation = 0.785398
+
+[node name="Coin13" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(905, -57)
+rotation = 0.785398
+
+[node name="Coin14" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(922, -73)
+rotation = 0.785398
+
+[node name="Coin15" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(905, -73)
+rotation = 0.785398
+
+[node name="Coin16" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(923, -128)
+rotation = 2.35619
+
+[node name="Coin" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(41, 55)
+
+[node name="Coin17" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(90, -26)
+
+[node name="Coin18" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(90, -39)
+
+[node name="Coin2" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(54, 55)
+
+[node name="Coin3" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(67, 55)
+
+[node name="Coin4" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(201, 55)
+
+[node name="Coin5" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(214, 55)
+
+[node name="Coin6" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(440, 39)
+
+[node name="Coin7" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(455, 39)
+
+[node name="Coin8" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(471, 39)
+
+[node name="Coin9" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(471, 26)
+
+[node name="Coin10" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(455, 26)
+
+[node name="Coin11" parent="Collectables" instance=ExtResource("8_50yf4")]
+position = Vector2(440, 26)
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="GreenPlatform" parent="Platforms" instance=ExtResource("9_c8257")]
+position = Vector2(15, -8)
+
+[node name="GreenPlatform2" parent="Platforms" instance=ExtResource("9_c8257")]
+position = Vector2(322, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/GreenPlatform2"]
+libraries = {
+"": SubResource("AnimationLibrary_5ycqx")
+}
+autoplay = "move"
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = -88.0
+offset_top = 16.0
+offset_right = -1.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_x15p0")
+theme_override_font_sizes/font_size = 8
+text = "Space to jump"
+
+[node name="Label2" type="Label" parent="Labels"]
+offset_left = -76.0
+offset_top = -28.0
+offset_right = -3.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_x15p0")
+theme_override_font_sizes/font_size = 8
+text = "Move with
+arrow keys "
+
+[node name="Label3" type="Label" parent="Labels"]
+offset_left = 346.0
+offset_top = 63.0
+offset_right = 419.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_x15p0")
+theme_override_font_sizes/font_size = 8
+text = "Falling
+hurts"
+
+[node name="FinishLevel" parent="." instance=ExtResource("10_iv7gx")]
+
+[connection signal="level_finished" from="FinishLevel" to="GameManager" method="_on_finish_level_level_finished"]
+[connection signal="level_finished" from="FinishLevel" to="Player" method="_on_finish_level_level_finished"]
