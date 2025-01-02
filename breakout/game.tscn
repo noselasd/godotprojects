@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3obmslwroscx"]
+[gd_scene load_steps=13 format=3 uid="uid://b3obmslwroscx"]
 
 [ext_resource type="Texture2D" uid="uid://dthw7l3bc3yqd" path="res://assets/paddle.png" id="1_efyyo"]
 [ext_resource type="Script" path="res://paddle.gd" id="1_gf2sp"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bi7yotbsy1g1k" path="res://assets/ball.png" id="3_d5m0n"]
 [ext_resource type="Script" path="res://kill_zone.gd" id="5_7gmab"]
 [ext_resource type="Texture2D" uid="uid://dltt82bqsqjc" path="res://assets/AlphaCen_Cantrell_960.jpg" id="7_265ph"]
+
+[sub_resource type="Curve" id="Curve_id2pg"]
+_data = [Vector2(0.020316, 0.962715), 0.0, 0.0, 0, 0, Vector2(0.923251, 0.0455067), 0.29364, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1u07"]
 radius = 16.0312
@@ -38,6 +42,19 @@ polygon = PackedVector2Array(-22, -4, -64, -6, -100, -8, -128, -6, -137, 10, -13
 [node name="Ball" type="CharacterBody2D" parent="."]
 position = Vector2(1136, 1065)
 script = ExtResource("3_1pvth")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Ball"]
+amount = 25
+lifetime = 0.2
+lifetime_randomness = 0.1
+texture = ExtResource("3_d5m0n")
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, 0)
+tangential_accel_max = 5.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_id2pg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 scale = Vector2(0.3, 0.3)
