@@ -1,19 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3obmslwroscx"]
+[gd_scene load_steps=10 format=3 uid="uid://b3obmslwroscx"]
 
 [ext_resource type="Texture2D" uid="uid://dthw7l3bc3yqd" path="res://assets/paddle.png" id="1_efyyo"]
 [ext_resource type="Script" path="res://paddle.gd" id="1_gf2sp"]
 [ext_resource type="Script" path="res://game.gd" id="1_uqrmp"]
-[ext_resource type="Script" path="res://ball.gd" id="3_1pvth"]
-[ext_resource type="Texture2D" uid="uid://bi7yotbsy1g1k" path="res://assets/ball.png" id="3_d5m0n"]
+[ext_resource type="PackedScene" uid="uid://b5fo0e4a5oq41" path="res://ball.tscn" id="4_cbsrx"]
 [ext_resource type="Script" path="res://kill_zone.gd" id="5_7gmab"]
-[ext_resource type="Texture2D" uid="uid://dltt82bqsqjc" path="res://assets/AlphaCen_Cantrell_960.jpg" id="7_265ph"]
-
-[sub_resource type="Curve" id="Curve_id2pg"]
-_data = [Vector2(0.020316, 0.962715), 0.0, 0.0, 0, 0, Vector2(0.923251, 0.0455067), 0.29364, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_w1u07"]
-radius = 16.0312
+[ext_resource type="Texture2D" uid="uid://cc2ea2ue3d3j3" path="res://assets/M27_Stobie_1432.jpg" id="6_ms7ey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agyuy"]
 size = Vector2(31.2077, 1419.75)
@@ -27,6 +19,9 @@ distance = -242.0
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uqrmp")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(962, 715)
+
 [node name="Paddle" type="CharacterBody2D" parent="."]
 position = Vector2(959.083, 1312)
 motion_mode = 1
@@ -39,29 +34,8 @@ texture = ExtResource("1_efyyo")
 position = Vector2(21.917, -11)
 polygon = PackedVector2Array(-22, -4, -64, -6, -100, -8, -128, -6, -137, 10, -131, 33, -94, 34, -23, 35, 23.6838, 34.0473, 75, 33, 89, 10, 84, -6, 60.824, -8, 22, -5)
 
-[node name="Ball" type="CharacterBody2D" parent="."]
-position = Vector2(1136, 1065)
-script = ExtResource("3_1pvth")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Ball"]
-amount = 25
-lifetime = 0.2
-lifetime_randomness = 0.1
-texture = ExtResource("3_d5m0n")
-emission_shape = 1
-emission_sphere_radius = 8.0
-gravity = Vector2(0, 0)
-tangential_accel_max = 5.0
-scale_amount_min = 0.2
-scale_amount_max = 0.2
-scale_amount_curve = SubResource("Curve_id2pg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_d5m0n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource("CircleShape2D_w1u07")
+[node name="Ball" parent="." node_paths=PackedStringArray("game") instance=ExtResource("4_cbsrx")]
+game = NodePath("..")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 position = Vector2(-4, 710.646)
@@ -92,20 +66,26 @@ script = ExtResource("5_7gmab")
 position = Vector2(-3, 3)
 shape = SubResource("WorldBoundaryShape2D_521y6")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(962, 715)
-
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -5
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
-modulate = Color(1, 1, 1, 0.666667)
+modulate = Color(1, 1, 1, 0.137255)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_265ph")
+texture = ExtResource("6_ms7ey")
 expand_mode = 3
+
+[node name="BricksLabel" type="Label" parent="."]
+z_index = 1
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 128.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 36
+text = "50 left"
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5fo0e4a5oq41"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_v8d3r"]
+[ext_resource type="Texture2D" uid="uid://bi7yotbsy1g1k" path="res://assets/ball.png" id="2_6ujxr"]
+
+[sub_resource type="Curve" id="Curve_id2pg"]
+_data = [Vector2(0.020316, 0.962715), 0.0, 0.0, 0, 0, Vector2(0.923251, 0.0455067), 0.29364, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1u07"]
+radius = 16.0312
+
+[node name="Ball" type="CharacterBody2D"]
+position = Vector2(1136, 1065)
+script = ExtResource("1_v8d3r")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 25
+lifetime = 0.2
+lifetime_randomness = 0.1
+draw_order = 1
+texture = ExtResource("2_6ujxr")
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, 0)
+tangential_accel_max = 5.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_id2pg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_6ujxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w1u07")

@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name Brick
  
+func _ready():
+	$CPUParticles2D.color = self.modulate
 func hit() -> void:
 	$CollisionShape2D.disabled = true
 	$Sprite2D.visible = false

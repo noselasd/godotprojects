@@ -20,3 +20,7 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1440
 window/stretch/mode="viewport"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
