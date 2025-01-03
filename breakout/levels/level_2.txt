@@ -6,8 +6,8 @@
     BG  GB
    BG    GB
    BG    GB
-  BG      GB
-  BG      GB
+  BG  ++  GB
+  BG  ++  GB
    BG    GB
    BG    GB
     BG  GB

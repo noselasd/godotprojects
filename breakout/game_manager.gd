@@ -1,2 +1,2 @@
 extends Node
-var current_level = 3
+var current_level = 1

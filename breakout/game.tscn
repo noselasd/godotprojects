@@ -93,7 +93,7 @@ offset_top = 17.0
 offset_right = 128.0
 offset_bottom = 67.0
 theme_override_font_sizes/font_size = 36
-text = "50 left"
+text = " X left"
 
 [node name="LevelLabel" type="Label" parent="."]
 offset_left = 1232.0

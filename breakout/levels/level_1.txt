@@ -4,4 +4,4 @@
  RRRRRRRRRRRR
  GGGGGGGGGGGG
  BBB      BBB
- BB        BB
+ BB   ++   BB

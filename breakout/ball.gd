@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal())
 		var collider = collision.get_collider()
 		var brick : Brick = collider as Brick
-		if brick:
+		if brick and not brick.fixed:
 			brick.hit()
 			game.brick_removed()
 			

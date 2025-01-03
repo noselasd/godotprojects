@@ -13,20 +13,27 @@ func _ready() -> void:
 	print("level ", GameManager.current_level)
 	$LevelLabel.text = "Level " + str(GameManager.current_level)
 	level_from_file("res://levels/level_" + str(GameManager.current_level) + ".txt")
+	update_remaining()
 	#random_level()
 func add_brick(row:int, col:int, type: String):
 	var color_map = {
 		'R': Color.RED,
 		'G': Color.GREEN,
-		'B': Color.BLUE
+		'B': Color.BLUE,
+		'+': Color.SANDY_BROWN
+		
 	}
 	var brick : Brick = brick_scene.instantiate()
 	var color = color_map.get(type)
 	if color:
 		brick.modulate = color
-	
+	if type == '+':
+		brick.fixed = true
+	else:
+		cnt_bricks += 1
 	brick.position = Vector2(BRICK_WIDTH/2 + col * (BRICK_WIDTH + 4), BRICK_HEIGTH/2 + row * (BRICK_HEIGTH + 4))
 	add_child(brick)
+	
 	
 func level_from_file(file):
 	var f = FileAccess.open(file, FileAccess.READ)
@@ -44,7 +51,7 @@ func level_from_file(file):
 		for b in l:
 			if b != ' ' and b != '\t':
 				add_brick(row, col, b)
-				cnt_bricks += 1
+				
 			if b == '\t':
 				col += 4
 			else:
@@ -75,8 +82,6 @@ func random_level():
 			brick.position = Vector2(margin + c * (96 + 4), (margin + r * (32 + 4)))
 			add_child(brick)
 			cnt_bricks += 1
-
-	update_remaining()
 
 func update_remaining():
 	$BricksLabel.text = str(cnt_bricks) + " left"
