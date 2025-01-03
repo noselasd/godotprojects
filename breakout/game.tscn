@@ -15,7 +15,7 @@ size = Vector2(31.2077, 1419.75)
 size = Vector2(20, 1990)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_521y6"]
-distance = -242.0
+distance = -9.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uqrmp")
@@ -63,7 +63,7 @@ position = Vector2(-12.9167, -4.77176)
 shape = SubResource("RectangleShape2D_agyuy")
 
 [node name="KillZone" type="Area2D" parent="."]
-position = Vector2(963.083, 1455)
+position = Vector2(747, 1507)
 script = ExtResource("5_7gmab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
@@ -104,7 +104,6 @@ theme_override_font_sizes/font_size = 36
 
 [node name="PauseScreen" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 script = ExtResource("7_hei8b")
 
 [node name="Label" type="Label" parent="PauseScreen"]
@@ -124,4 +123,24 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 96
 text = "PAUSED"
 
+[node name="Instructions" type="Label" parent="PauseScreen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -173.0
+offset_top = -215.0
+offset_right = 173.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.729139, 0.819629, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Arrow keys moves paddle
+Space to pause/resume"
+horizontal_alignment = 1
+
+[connection signal="brick_destroyed" from="Ball" to="." method="_on_ball_brick_destroyed"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+[connection signal="dead" from="KillZone" to="." method="_on_kill_zone_dead"]

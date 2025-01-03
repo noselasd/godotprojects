@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Ball
+
 @export var game : Game
+signal brick_destroyed
+
 var speed = 600.0
 var speedup = 1.003 # .3% speedup each paddle hit
 func _ready():
@@ -15,11 +18,11 @@ func _physics_process(delta: float) -> void:
 		var brick : Brick = collider as Brick
 		if brick and not brick.fixed:
 			brick.hit()
-			game.brick_removed()
+			brick_destroyed.emit()
 			
 		elif collider is Paddle:
 			velocity *= speedup
-		# preent horizontal jam
+		# prevent horizontal jam
 		if velocity.y >= -50 and velocity.y < 0:
 			velocity.y = -speed/2
 		elif velocity.y <= 50 and velocity.y >= 0:

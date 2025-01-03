@@ -15,7 +15,7 @@ func _ready() -> void:
 	level_from_file("res://levels/level_" + str(GameManager.current_level) + ".txt")
 	update_remaining()
 	#random_level()
-func add_brick(row:int, col:int, type: String):
+func add_brick(row: int, col: int, type: String):
 	var color_map = {
 		'R': Color.RED,
 		'G': Color.GREEN,
@@ -61,7 +61,13 @@ func level_from_file(file):
 		row += 1
 		col = 0
 
-		
+	
+func brick_color(row: int , col: int, colors: Array):
+
+	if row < colors.size():
+		return colors[row]
+	return null
+	
 func random_level():
 	const max_rows = 5
 	const max_cols = 12
@@ -94,14 +100,11 @@ func level_finished():
 	GameManager.current_level += 1
 	get_tree().reload_current_scene()
 	
-func brick_removed():
+func _on_ball_brick_destroyed():
 	cnt_bricks -= 1
 	update_remaining()
 	if cnt_bricks == 0:
 		level_finished()
-	
-func brick_color(row: int , col: int, colors: Array):
 
-	if row < colors.size():
-		return colors[row]
-	return null
+func _on_kill_zone_dead() -> void:
+	get_tree().reload_current_scene()
