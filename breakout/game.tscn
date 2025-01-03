@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3obmslwroscx"]
+[gd_scene load_steps=11 format=3 uid="uid://b3obmslwroscx"]
 
 [ext_resource type="Texture2D" uid="uid://dthw7l3bc3yqd" path="res://assets/paddle.png" id="1_efyyo"]
 [ext_resource type="Script" path="res://paddle.gd" id="1_gf2sp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5fo0e4a5oq41" path="res://ball.tscn" id="4_cbsrx"]
 [ext_resource type="Script" path="res://kill_zone.gd" id="5_7gmab"]
 [ext_resource type="Texture2D" uid="uid://cc2ea2ue3d3j3" path="res://assets/M27_Stobie_1432.jpg" id="6_ms7ey"]
+[ext_resource type="Script" path="res://pause.gd" id="7_hei8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agyuy"]
 size = Vector2(31.2077, 1419.75)
@@ -100,5 +101,27 @@ offset_left = 1232.0
 offset_right = 1393.0
 offset_bottom = 50.0
 theme_override_font_sizes/font_size = 36
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("7_hei8b")
+
+[node name="Label" type="Label" parent="PauseScreen"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.5
+offset_top = -66.0
+offset_right = 185.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 96
+text = "PAUSED"
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
