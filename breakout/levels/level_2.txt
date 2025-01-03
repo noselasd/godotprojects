@@ -1,0 +1,14 @@
+     BB
+     GG
+   BG  GB
+   BG  GB
+  BG    GB
+  BG    GB
+ BG      GB
+ BG      GB
+  BG    GB
+  BG    GB
+   BG  GB
+   BG  GB
+     GG
+     BB
