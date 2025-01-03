@@ -1,15 +1,16 @@
-     BB
-     BB
-    BGGGB
-   BG   GB
-  BG     GB
-  BG     GB
- BG       GB
- BG       GB
-  BG     GB
-  BG     GB
-   BG   GB
-    BGGGB
-     BB
-     BB
+ 
 
+      BB
+      BB
+     BGGB
+    BG  GB
+   BG    GB
+   BG    GB
+  BG      GB
+  BG      GB
+   BG    GB
+   BG    GB
+    BG  GB
+     BGGB
+      BB
+      BB

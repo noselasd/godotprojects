@@ -10,3 +10,4 @@ func hit() -> void:
 	var timer = get_tree().create_timer(1, false)
 	await timer.timeout
 	queue_free()
+	$Sprite2D.centered

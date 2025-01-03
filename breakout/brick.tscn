@@ -7,7 +7,7 @@
 size = Vector2(96, 32)
 
 [node name="Brick" type="StaticBody2D"]
-position = Vector2(0, 1)
+position = Vector2(48, 16)
 script = ExtResource("1_mqyny")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
