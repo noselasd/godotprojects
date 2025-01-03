@@ -1,14 +1,15 @@
      BB
-     GG
-   BG  GB
-   BG  GB
-  BG    GB
-  BG    GB
- BG      GB
- BG      GB
-  BG    GB
-  BG    GB
-   BG  GB
-   BG  GB
-     GG
      BB
+    BGGGB
+   BG   GB
+  BG     GB
+  BG     GB
+ BG       GB
+ BG       GB
+  BG     GB
+  BG     GB
+   BG   GB
+    BGGGB
+     BB
+     BB
+

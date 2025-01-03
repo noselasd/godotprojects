@@ -1,0 +1,10 @@
+RG         GR
+RG   BB    GR
+RG   BB    GR
+ RGG     GGR
+ RGG     GGR
+ RGG     GGR
+  RGG  GGR
+  RGG  GGR
+   RGGGGR
+   RGGGGR

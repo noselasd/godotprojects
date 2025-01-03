@@ -25,6 +25,7 @@ anchor_mode = 0
 [node name="Paddle" type="CharacterBody2D" parent="."]
 position = Vector2(759, 1142)
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_gf2sp")
 metadata/_edit_group_ = true
 

@@ -1,6 +1,6 @@
 extends Node2D
 class_name Game
-const margin = 150
+const margin = 100
 
 var cnt_bricks : int = 0
 var brick_scene = preload("res://brick.tscn")
