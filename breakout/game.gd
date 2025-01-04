@@ -20,6 +20,7 @@ func add_brick(row: int, col: int, type: String):
 		'R': Color.RED,
 		'G': Color.GREEN,
 		'B': Color.BLUE,
+		'C': Color.CYAN,
 		'+': Color.SANDY_BROWN
 		
 	}
@@ -38,7 +39,7 @@ func add_brick(row: int, col: int, type: String):
 func level_from_file(file):
 	var f = FileAccess.open(file, FileAccess.READ)
 	if not f:
-		return
+		get_tree().change_scene_to_file("res://main_screen.tscn")
 	
 	var row = 0
 	var col = 0

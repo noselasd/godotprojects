@@ -70,23 +70,6 @@ script = ExtResource("5_7gmab")
 position = Vector2(-3, 3)
 shape = SubResource("WorldBoundaryShape2D_521y6")
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="TextureRect" type="TextureRect" parent="Background"]
-modulate = Color(1, 1, 1, 0.137255)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -113.0
-offset_top = -28.0
-offset_right = 72.2399
-offset_bottom = -28.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_ms7ey")
-expand_mode = 3
-
 [node name="BricksLabel" type="Label" parent="."]
 z_index = 1
 offset_left = 20.0
@@ -104,6 +87,7 @@ theme_override_font_sizes/font_size = 36
 
 [node name="PauseScreen" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 script = ExtResource("7_hei8b")
 
 [node name="Label" type="Label" parent="PauseScreen"]
@@ -113,15 +97,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -185.5
-offset_top = -66.0
-offset_right = 185.5
-offset_bottom = 66.0
+offset_left = -185.0
+offset_top = -67.0
+offset_right = 186.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 96
+theme_override_colors/font_color = Color(0.729412, 0.819608, 1, 0.823529)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.784314)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
 text = "PAUSED"
+horizontal_alignment = 1
 
 [node name="Instructions" type="Label" parent="PauseScreen"]
 anchors_preset = 7
@@ -136,10 +124,28 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.729139, 0.819629, 1, 1)
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 0.894118)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 28
-text = "Arrow keys moves paddle
-Space to pause/resume"
+text = "Space to pause/resume"
 horizontal_alignment = 1
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.137255)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -28.0
+offset_right = 72.2399
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ms7ey")
+expand_mode = 3
 
 [connection signal="brick_destroyed" from="Ball" to="." method="_on_ball_brick_destroyed"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

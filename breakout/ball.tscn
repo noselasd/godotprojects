@@ -13,6 +13,7 @@ radius = 16.0312
 [node name="Ball" type="CharacterBody2D"]
 position = Vector2(1136, 1065)
 script = ExtResource("1_v8d3r")
+game = NodePath("")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 25
