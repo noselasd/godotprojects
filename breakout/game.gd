@@ -15,6 +15,11 @@ func _ready() -> void:
 	level_from_file("res://levels/level_" + str(GameManager.current_level) + ".txt")
 	update_remaining()
 	#random_level()
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://main_screen.tscn")
+		
+
 func add_brick(row: int, col: int, type: String):
 	var color_map = {
 		'R': Color.RED,
