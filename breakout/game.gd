@@ -62,8 +62,6 @@ func level_from_file(file):
 				col += 4
 			else:
 				col += 1
-			printraw(b)
-		printraw("\n")
 		row += 1
 		col = 0
 

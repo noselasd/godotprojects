@@ -3,20 +3,34 @@ class_name Ball
 
 @export var game : Game
 signal brick_destroyed
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
+@onready var bounce_sound: AudioStreamPlayer2D = $BounceSound
+
+
 
 var speed = 600.0
 var speedup = 1.003 # .3% speedup each paddle hit
 func _ready():
 	velocity = Vector2(-1 * speed, speed)
+
+func play_hit_sound():
+	hit_sound.pitch_scale = randf_range(0.8,1.2)
+	hit_sound.play()
+	
+func play_bounce_sound():
+	bounce_sound.pitch_scale = randf_range(0.9,1.1)
+	bounce_sound.play()
 	
 func _physics_process(delta: float) -> void:
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
+		play_bounce_sound()
 		velocity = velocity.bounce(collision.get_normal())
 		var collider = collision.get_collider()
 		var brick : Brick = collider as Brick
 		if brick and not brick.fixed:
+			play_hit_sound()
 			brick.hit()
 			brick_destroyed.emit()
 			

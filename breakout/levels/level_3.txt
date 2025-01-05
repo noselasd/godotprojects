@@ -9,5 +9,5 @@
   RGG    GGR
    RGG  GGR
    RGG  GGR
-    RGGGGGR
-    RGGGGGR
+	RGGGGGR
+	RGGGGGR

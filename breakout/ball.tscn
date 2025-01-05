@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5fo0e4a5oq41"]
+[gd_scene load_steps=7 format=3 uid="uid://b5fo0e4a5oq41"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_v8d3r"]
 [ext_resource type="Texture2D" uid="uid://bi7yotbsy1g1k" path="res://assets/ball.png" id="2_6ujxr"]
+[ext_resource type="AudioStream" uid="uid://cj8xsbtxvae4q" path="res://sounds/hit_sound.mp3" id="3_1l5mi"]
+[ext_resource type="AudioStream" uid="uid://bawqwatim48xq" path="res://sounds/bounce_1.mp3" id="3_01wjh"]
 
 [sub_resource type="Curve" id="Curve_id2pg"]
 _data = [Vector2(0.020316, 0.962715), 0.0, 0.0, 0, 0, Vector2(0.923251, 0.0455067), 0.29364, 0.0, 0, 0]
@@ -13,7 +15,6 @@ radius = 16.0312
 [node name="Ball" type="CharacterBody2D"]
 position = Vector2(1136, 1065)
 script = ExtResource("1_v8d3r")
-game = NodePath("")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 25
@@ -35,3 +36,9 @@ texture = ExtResource("2_6ujxr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w1u07")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1l5mi")
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_01wjh")
