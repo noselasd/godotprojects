@@ -1,7 +1,9 @@
 
 
 
- RRRRRRRRRRRR
- GGGGGGGGGGGG
- BBB      BBB
- BB   ++   BB
+ C          C
+ BB        BB
+  GGGGGGGGGG 
+
+
+	  ++

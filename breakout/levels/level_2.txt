@@ -1,16 +1,7 @@
- 
 
-	  BB
-	  BB
-	 BGGB
-	BG  GB
-   BG    GB
-   BG    GB
-  BG  ++  GB
-  BG  ++  GB
-   BG    GB
-   BG    GB
-	BG  GB
-	 BGGB
-	  BB
-	  BB
+
+
+ RRRRRRRRRRRR
+ GGGGGGGGGGGG
+ BBB      BBB
+ BB   ++   BB

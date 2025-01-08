@@ -1,19 +1,13 @@
-BBBBBBBBBBBBBB
-BB          BB
-B            B
-BB          BB
-B            B
-BB          BB
-B            B
-BB          BB
-B            B
-BB    ++    BB
-B            B
-BB          BB
-BB          BB
-B            B
-BB          BB
-B            B
-BB          BB
-B            B
-B ++  ++  ++ B
+
+
+
+ RG        GR
+ RG   BB   GR
+ RG   BB   GR
+  RGG    GGR
+  RGG    GGR
+  RGG    GGR
+   RGG  GGR
+   RGG  GGR
+	RGGGGGR
+	RGGGGGR
