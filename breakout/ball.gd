@@ -1,17 +1,19 @@
 extends CharacterBody2D
 class_name Ball
 
-@export var game : Game
 signal brick_destroyed
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var bounce_sound: AudioStreamPlayer2D = $BounceSound
 
 
-
-var speed = 600.0
+@export var sound_on : bool = true
+@export var speed : float = 600.0
 var speedup = 1.003 # .3% speedup each paddle hit
 func _ready():
 	velocity = Vector2(-1 * speed, speed)
+	if not sound_on:
+		hit_sound.volume_db = -1000
+		bounce_sound.volume_db = -1000
 
 func play_hit_sound():
 	hit_sound.pitch_scale = randf_range(0.8,1.2)
@@ -27,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		play_bounce_sound()
 		velocity = velocity.bounce(collision.get_normal())
+		
 		var collider = collision.get_collider()
 		var brick : Brick = collider as Brick
 		if brick and not brick.fixed:
@@ -36,6 +39,7 @@ func _physics_process(delta: float) -> void:
 			
 		elif collider is Paddle:
 			velocity *= speedup
+			
 		# prevent horizontal jam
 		if velocity.y >= -50 and velocity.y < 0:
 			velocity.y = -speed/2

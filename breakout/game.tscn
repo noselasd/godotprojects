@@ -37,29 +37,24 @@ texture = ExtResource("1_efyyo")
 position = Vector2(21.917, -11)
 polygon = PackedVector2Array(-22, -4, -64, -6, -100, -8, -128, -6, -137, 10, -131, 33, -94, 34, -23, 35, 23.6838, 34.0473, 75, 33, 89, 10, 84, -6, 60.824, -8, 22, -5)
 
-[node name="Ball" parent="." node_paths=PackedStringArray("game") instance=ExtResource("4_cbsrx")]
+[node name="Ball" parent="." instance=ExtResource("4_cbsrx")]
 position = Vector2(844, 937)
-game = NodePath("..")
 
-[node name="LeftWall" type="StaticBody2D" parent="."]
-position = Vector2(-4, 710.646)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(-12.9167, -10.8973)
-shape = SubResource("RectangleShape2D_agyuy")
-
-[node name="Ceiling" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
 position = Vector2(960.083, -13)
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+[node name="CollisionShapeRWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(721.227, -457.003)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_agyuy")
+
+[node name="CollisionShapeCeiling" type="CollisionShape2D" parent="Walls"]
 shape = SubResource("RectangleShape2D_wls4t")
 
-[node name="RightWall" type="StaticBody2D" parent="."]
-position = Vector2(1430, 713)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-position = Vector2(-12.9167, -4.77176)
+[node name="CollisionShapeLWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(712.752, 976.997)
+rotation = -1.5708
 shape = SubResource("RectangleShape2D_agyuy")
 
 [node name="KillZone" type="Area2D" parent="."]

@@ -32,7 +32,7 @@ func add_brick(row: int, col: int, type: String):
 	var brick : Brick = brick_scene.instantiate()
 	var color = color_map.get(type)
 	if color:
-		brick.modulate = color
+		brick.color = color
 	if type == '+':
 		brick.fixed = true
 	else:
@@ -88,7 +88,7 @@ func random_level():
 			var brick : Brick = brick_scene.instantiate()
 			var color = brick_color(r,c, colors)
 			if color:
-				brick.modulate = brick_color(r,c, colors)
+				brick.color = brick_color(r,c, colors)
 			brick.position = Vector2(margin + c * (96 + 4), (margin + r * (32 + 4)))
 			add_child(brick)
 			cnt_bricks += 1

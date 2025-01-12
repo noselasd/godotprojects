@@ -2,8 +2,12 @@ extends StaticBody2D
 class_name Brick
 
 @export var fixed = false
+@export var color : Color = Color.TRANSPARENT
+
 func _ready():
-	$CPUParticles2D.color = self.modulate
+	if color !=  Color.TRANSPARENT:
+		modulate = self.color
+		$CPUParticles2D.color = self.color
 func hit() -> void:
 	if fixed:
 		return
