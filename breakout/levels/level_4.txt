@@ -1,13 +1,16 @@
+ 
 
-
-
- RG        GR
- RG   BB   GR
- RG   BB   GR
-  RGG    GGR
-  RGG    GGR
-  RGG    GGR
-   RGG  GGR
-   RGG  GGR
-	RGGGGGR
-	RGGGGGR
+	  BB
+	  BB
+	 BGGB
+	BG  GB
+   BG    GB
+   BG    GB
+  BG  ++  GB
+  BG  ++  GB
+   BG    GB
+   BG    GB
+	BG  GB
+	 BGGB
+	  BB
+	  BB
