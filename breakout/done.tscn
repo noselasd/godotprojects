@@ -1,0 +1,124 @@
+[gd_scene load_steps=6 format=3 uid="uid://dforlaej782al"]
+
+[ext_resource type="Script" path="res://done.gd" id="1_cvssx"]
+[ext_resource type="Texture2D" uid="uid://bu17e4m5vxf42" path="res://assets/done.jpg" id="1_lvchh"]
+
+[sub_resource type="Animation" id="Animation_r43si"]
+resource_name = "init"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.36914, 1.15039)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RichTextLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jv27c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.36914, 1.15039)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RichTextLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05rnx"]
+_data = {
+"RESET": SubResource("Animation_jv27c"),
+"init": SubResource("Animation_r43si")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cvssx")
+
+[node name="Done" type="Sprite2D" parent="."]
+position = Vector2(699, 596)
+scale = Vector2(1.36914, 1.15039)
+texture = ExtResource("1_lvchh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 397.0
+offset_top = 649.0
+offset_right = 1150.0
+offset_bottom = 950.0
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.596078, 0.345098, 0.0627451, 1)
+theme_override_colors/font_outline_color = Color(0.301961, 0.109804, 0.0509804, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/bold_italics_font_size = 96
+theme_override_font_sizes/italics_font_size = 96
+theme_override_font_sizes/mono_font_size = 96
+theme_override_font_sizes/normal_font_size = 96
+theme_override_font_sizes/bold_font_size = 96
+bbcode_enabled = true
+text = "[center][tornado radius=2.0 freq=1.5 connected=1]You completed  all levels ![/tornado][/center]
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Done")
+libraries = {
+"": SubResource("AnimationLibrary_05rnx")
+}
+autoplay = "init"

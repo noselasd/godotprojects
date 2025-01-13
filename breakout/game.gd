@@ -1,7 +1,7 @@
 extends Node2D
 class_name Game
 const margin = 0
-
+const MAX_LEVEL = 6
 var cnt_bricks : int = 0
 const BRICK_WIDTH :int = 96
 const BRICK_HEIGTH :int = 32
@@ -101,8 +101,11 @@ func level_finished():
 	Engine.time_scale = 0.15
 	await timer.timeout
 	Engine.time_scale = 1
-	GameManager.current_level += 1
-	get_tree().reload_current_scene()
+	if GameManager.current_level == MAX_LEVEL:
+		get_tree().change_scene_to_file("res://done.tscn")
+	else:
+		GameManager.current_level += 1
+		get_tree().reload_current_scene()
 	
 func _on_ball_brick_destroyed():
 	cnt_bricks -= 1
