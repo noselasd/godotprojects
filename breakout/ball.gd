@@ -39,10 +39,18 @@ func _physics_process(delta: float) -> void:
 			
 		elif collider is Paddle:
 			velocity *= speedup
+			print(velocity)
 			
-		# prevent horizontal jam
+		# prevent horizontal/vertical  jam
 		if velocity.y >= -50 and velocity.y < 0:
 			velocity.y = -speed/2
 		elif velocity.y <= 50 and velocity.y >= 0:
 			velocity.y = speed/2
+		
+		if velocity.x >= -25 and velocity.x < 0:
+			velocity.x = -speed/2
+			print("X stuck1")
+		elif velocity.x <= 25 and velocity.x >= 0:
+			velocity.x = speed/2
+			print("X stuck2")
 	
