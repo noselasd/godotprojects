@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5fo0e4a5oq41"]
 
-[ext_resource type="Script" path="res://ball.gd" id="1_v8d3r"]
+[ext_resource type="Script" uid="uid://dasyqxxph252q" path="res://ball.gd" id="1_v8d3r"]
 [ext_resource type="Texture2D" uid="uid://bi7yotbsy1g1k" path="res://assets/ball.png" id="2_6ujxr"]
 [ext_resource type="AudioStream" uid="uid://cj8xsbtxvae4q" path="res://sounds/hit_sound.mp3" id="3_1l5mi"]
 [ext_resource type="AudioStream" uid="uid://bawqwatim48xq" path="res://sounds/bounce_1.mp3" id="3_01wjh"]
@@ -18,10 +18,10 @@ script = ExtResource("1_v8d3r")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 25
+texture = ExtResource("2_6ujxr")
 lifetime = 0.2
 lifetime_randomness = 0.1
 draw_order = 1
-texture = ExtResource("2_6ujxr")
 emission_shape = 1
 emission_sphere_radius = 8.0
 gravity = Vector2(0, 0)

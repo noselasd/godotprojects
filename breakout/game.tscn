@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://b3obmslwroscx"]
 
 [ext_resource type="Texture2D" uid="uid://dthw7l3bc3yqd" path="res://assets/paddle.png" id="1_efyyo"]
-[ext_resource type="Script" path="res://paddle.gd" id="1_gf2sp"]
-[ext_resource type="Script" path="res://game.gd" id="1_uqrmp"]
+[ext_resource type="Script" uid="uid://bvt0mimw15obv" path="res://paddle.gd" id="1_gf2sp"]
+[ext_resource type="Script" uid="uid://c7hqth8gmvo3i" path="res://game.gd" id="1_uqrmp"]
 [ext_resource type="PackedScene" uid="uid://b5fo0e4a5oq41" path="res://ball.tscn" id="4_cbsrx"]
-[ext_resource type="Script" path="res://kill_zone.gd" id="5_7gmab"]
+[ext_resource type="Script" uid="uid://dvvh6bykabemr" path="res://kill_zone.gd" id="5_7gmab"]
 [ext_resource type="Texture2D" uid="uid://cc2ea2ue3d3j3" path="res://assets/M27_Stobie_1432.jpg" id="6_ms7ey"]
-[ext_resource type="Script" path="res://pause.gd" id="7_hei8b"]
+[ext_resource type="Script" uid="uid://dymtyw54c26gv" path="res://pause.gd" id="7_hei8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agyuy"]
 size = Vector2(31.2077, 1419.75)

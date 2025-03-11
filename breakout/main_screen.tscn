@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://ceskr0xli5jwb"]
 
 [ext_resource type="Texture2D" uid="uid://dltt82bqsqjc" path="res://assets/AlphaCen_Cantrell_960.jpg" id="1_hycvr"]
-[ext_resource type="Script" path="res://main_screen.gd" id="1_i4xvb"]
+[ext_resource type="Script" uid="uid://d2e0xj75bbjr3" path="res://main_screen.gd" id="1_i4xvb"]
 [ext_resource type="PackedScene" uid="uid://b2msgbbqtm05y" path="res://brick.tscn" id="4_c5xcd"]
 
 [sub_resource type="Animation" id="Animation_1hisp"]
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q253b"]
 _data = {
-"RESET": SubResource("Animation_1hisp"),
-"idle": SubResource("Animation_yc2d1")
+&"RESET": SubResource("Animation_1hisp"),
+&"idle": SubResource("Animation_yc2d1")
 }
 
 [sub_resource type="Animation" id="Animation_omd13"]
@@ -114,8 +114,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_glnfs"]
 _data = {
-"RESET": SubResource("Animation_omd13"),
-"intro": SubResource("Animation_smtvu")
+&"RESET": SubResource("Animation_omd13"),
+&"intro": SubResource("Animation_smtvu")
 }
 
 [sub_resource type="Animation" id="Animation_npahh"]
@@ -152,8 +152,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84hqb"]
 _data = {
-"RESET": SubResource("Animation_npahh"),
-"blink": SubResource("Animation_dvj8n")
+&"RESET": SubResource("Animation_npahh"),
+&"blink": SubResource("Animation_dvj8n")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhunk"]
@@ -181,7 +181,7 @@ texture = ExtResource("1_hycvr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 libraries = {
-"": SubResource("AnimationLibrary_q253b")
+&"": SubResource("AnimationLibrary_q253b")
 }
 autoplay = "idle"
 
@@ -210,7 +210,7 @@ text = "[center][tornado radius=6.0 freq=1.5 connected=1]BREAKOUT[/tornado][/cen
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_glnfs")
+&"": SubResource("AnimationLibrary_glnfs")
 }
 autoplay = "intro"
 
@@ -237,7 +237,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartLabel"]
 libraries = {
-"": SubResource("AnimationLibrary_84hqb")
+&"": SubResource("AnimationLibrary_84hqb")
 }
 
 [node name="instructions" type="Label" parent="."]
