@@ -54,6 +54,7 @@ func level_from_file(file):
 		
 		if f.eof_reached():
 			break
+			
 		for b in l:
 			if b != ' ' and b != '\t':
 				add_brick(row, col, b)

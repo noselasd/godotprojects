@@ -28,14 +28,13 @@ position = Vector2(759, 1142)
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_gf2sp")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Paddle"]
 texture = ExtResource("1_efyyo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Paddle"]
 position = Vector2(22, -12)
-polygon = PackedVector2Array(-77, -7, -88, -6, -105, -2, -117, 2, -127, 6, -133, 12, -135, 21, -136, 28, -83, 34, 34, 34, 89, 28, 88, 21, 84.667, 12, 78, 6, 69, 2, 56, -2, 39, -6, 30, -7)
+polygon = PackedVector2Array(-77, -7, -88, -6, -105, -2, -117, 2, -127, 6, -141, 12, -141, 21, -141, 28, -83, 34, 34, 34, 93, 29, 93, 21, 93, 12, 78, 6, 69, 2, 56, -2, 39, -6, 30, -7)
 
 [node name="Ball" parent="." instance=ExtResource("4_cbsrx")]
 position = Vector2(940, 1008)

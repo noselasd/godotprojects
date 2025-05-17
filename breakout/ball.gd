@@ -28,8 +28,9 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		play_bounce_sound()
+	#	v_before = velocity
+		var v_before = velocity
 		velocity = velocity.bounce(collision.get_normal())
-		
 		var collider = collision.get_collider()
 		var brick : Brick = collider as Brick
 		if brick and not brick.fixed:
@@ -38,19 +39,27 @@ func _physics_process(delta: float) -> void:
 			brick_destroyed.emit()
 			
 		elif collider is Paddle:
+			print("Velocity Before", v_before)
+			print("Velocity After ", velocity)
 			velocity *= speedup
-			print(velocity)
-			
+			position.y -= 2 # helps multiple collision when moving paddle as ball hits
 		# prevent horizontal/vertical  jam
 		if velocity.y >= -50 and velocity.y < 0:
-			velocity.y = -speed/2
+			velocity.x -= -50
+			velocity.y += 50
+			print("Y stuck1")
 		elif velocity.y <= 50 and velocity.y >= 0:
-			velocity.y = speed/2
+			velocity.x += 50 
+			velocity.y -= 25
+			print("Y stuck1")
+			
 		
-		if velocity.x >= -25 and velocity.x < 0:
-			velocity.x = -speed/2
+		if velocity.x >= -50 and velocity.x < 0:
+			velocity.x -= -50
+			velocity.y += 50
 			print("X stuck1")
 		elif velocity.x <= 25 and velocity.x >= 0:
-			velocity.x = speed/2
+			velocity.x += 50 
+			velocity.y -= 50
 			print("X stuck2")
-	
+		
